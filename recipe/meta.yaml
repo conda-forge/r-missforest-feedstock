@@ -1,5 +1,4 @@
 {% set version = '1.4' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,24 +9,26 @@ package:
 source:
   fn: missForest_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/missForest_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/missForest/missForest_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/missForest_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/missForest/missForest_{{ version }}.tar.gz
   sha256: f785804b03bdf424e1c76095989a803afb3b47d6bebca9a6832074b6326c0278
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
+
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-foreach
     - r-itertools
     - r-randomforest
-
   run:
     - r-base
     - r-foreach
@@ -36,7 +37,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('missForest')"  # [not win]
+    - $R -e "library('missForest')"           # [not win]
     - "\"%R%\" -e \"library('missForest')\""  # [win]
 
 about:
@@ -50,6 +51,8 @@ about:
     of a test set or elaborate cross-validation. It can be run in parallel to  save
     computation time.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
@@ -57,3 +60,5 @@ extra:
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
