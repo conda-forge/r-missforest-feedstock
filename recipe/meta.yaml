@@ -14,9 +14,9 @@ source:
   sha256: f785804b03bdf424e1c76095989a803afb3b47d6bebca9a6832074b6326c0278
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 1
-  skip: true  # [win32]
+  number: 1001
   rpaths:
     - lib/R/lib/
     - lib/
@@ -51,8 +51,7 @@ about:
     of a test set or elaborate cross-validation. It can be run in parallel to  save
     computation time.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
