@@ -7,16 +7,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: missForest_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/missForest_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/missForest/missForest_{{ version }}.tar.gz
   sha256: f785804b03bdf424e1c76095989a803afb3b47d6bebca9a6832074b6326c0278
 
 build:
-  noarch: generic
   merge_build_host: True  # [win]
   number: 1003
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
@@ -42,7 +41,7 @@ test:
 
 about:
   home: http://www.r-project.org, https://github.com/stekhoven/missForest
-  license: GPL (>= 2)
+  license: GPL-2.0-or-later
   summary: The function 'missForest' in this package is used to impute missing values particularly
     in the case of mixed-type data. It uses a random forest trained on the observed
     values of a data matrix to predict the missing values. It can be used to impute
@@ -56,9 +55,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
