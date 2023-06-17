@@ -1,11 +1,11 @@
-About r-missforest
-==================
+About r-missforest-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-missforest-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.r-project.org, https://github.com/stekhoven/missForest
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-missforest-feedstock/blob/main/LICENSE.txt)
 
 Summary: The function 'missForest' in this package is used to impute missing values particularly in the case of mixed-type data. It uses a random forest trained on the observed values of a data matrix to predict the missing values. It can be used to impute continuous and/or categorical data including complex interactions and non-linear relations. It yields an out-of-bag (OOB) imputation error estimate without the need of a test set or elaborate cross-validation. It can be run in parallel to  save computation time.
 
